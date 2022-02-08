@@ -13,13 +13,15 @@ namespace Reflexe
             {
                 if(item.Name=="Cookie")
                 {
-                    Console.WriteLine("Type: " + item.Name);
+                    Console.WriteLine("Class: " + item.Name);
                     var props = item.GetProperties();
+                    Console.WriteLine();
                     foreach (var prop in props)
                     {
                         Console.WriteLine("\tProperty: " + prop.Name);
                         Console.WriteLine("\t\tPropertyType: " + prop.PropertyType);
                     }
+                    Console.WriteLine();
                     var methods = item.GetMethods();
                     foreach (var method in methods)
                     {
@@ -28,10 +30,16 @@ namespace Reflexe
                             Console.WriteLine("\t\t\t\tMethod: " + method.Name);
                         }
                     }
+                    Console.WriteLine();
                     var constructors = item.GetConstructors();
                     foreach (var constructor in constructors)
                     {
                             Console.WriteLine("\t\t\t\t\tConstructor: " + constructor.Name);
+                        var itms = constructor.GetParameters();
+                        foreach (var itm in itms)
+                        {
+                            Console.WriteLine("\t\t\t\t\t\tParameter: " + itm.Name);
+                        }
                     }    
                 }
             }
